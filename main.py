@@ -34,11 +34,14 @@ while True:
                 player.hero.ml = False
             if i.key == pygame.K_SPACE:
                 player.hero.jump()
-
+            if i.key == pygame.K_e:
+                player.hero.attacktimer = 20
+                
         if i.type == pygame.KEYUP:
             if i.key == pygame.K_a:
                 player.hero.ml = False
             if i.key == pygame.K_d:
                 player.hero.mr = False
+            
     pygame.display.update()
     screen.fill([0,0,0])

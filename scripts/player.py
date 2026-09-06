@@ -15,7 +15,8 @@ class Player:
             "run":animation.Animation("assets/herochar sprites(new)/herochar_run_anim_strip_6.png",9,6,5),
             "jumpup":animation.Animation("assets/herochar sprites(new)/herochar_jump_up_anim_strip_3.png",9,3,10),
             "jumpdown":animation.Animation("assets/herochar sprites(new)/herochar_jump_down_anim_strip_3.png",9,3,10),
-            "doublejump":animation.Animation("assets/herochar sprites(new)/herochar_jump_double_anim_strip_3.png",9,3,3)
+            "doublejump":animation.Animation("assets/herochar sprites(new)/herochar_jump_double_anim_strip_3.png",9,3,3),
+            "heroattack":animation.Animation("assets/herochar sprites(new)/herochar_attack_anim_strip_4(new).png",9,4,3)
 
             
             
@@ -29,6 +30,7 @@ class Player:
         self.maxjumps = 2
         self.jumps = 0
         self.timeinair = 0
+        self.attacktimer  = 0
 
     def render(self,screen):
 
@@ -60,7 +62,9 @@ class Player:
                 self.state = "jumpup"
         if self.jumps == 2:
             self.state = "doublejump"
-            
+        if self.attacktimer > 0 :
+            self.state = "heroattack"
+            self.attacktimer -= 1           
         
 
     def get_hitbox(self):
@@ -97,6 +101,7 @@ class Player:
             if self.state != "doublejump" and self.state != "jumpup" and self.state != "jumpdown":
                 dd =dust.Dust(self.x,self.y)
                 dust.dusts.append(dd) 
+    
         
 hero = Player(400,500)
 
