@@ -4,10 +4,11 @@ from scripts import utilus
 from scripts import animation
 from scripts import player
 from scripts import level
-from scripts import settings,dust
+from scripts import settings,dust,enemy
 
 screen = pygame.display.set_mode([0,0],pygame.FULLSCREEN)
 clock = pygame.time.Clock()
+enemy.load_enemys()
 
 
 level.loadground()
@@ -17,8 +18,16 @@ while True:
     level.render(screen)
     level.camerax += (player.hero.x - screen.get_width() // 2 - level.camerax) // settings.CAMERASENSIVITY 
     level.cameray += (player.hero.y - screen.get_height() // 2 - level.cameray) // settings.CAMERASENSIVITY 
+    if level.camerax <= 0:
+        level.camerax = 0
+    if level.cameray <= 0:
+        level.cameray = 0
     player.hero.render(screen)
     player.hero.update()
+    for i in enemy.enemylist:
+        i.render(screen)
+        i.update()
+        i.control()
     for i in dust.dusts:
         i.render(screen)
         i.update()
@@ -36,7 +45,6 @@ while True:
                 player.hero.jump()
             if i.key == pygame.K_e:
                 player.hero.attacktimer = 20
-                
         if i.type == pygame.KEYUP:
             if i.key == pygame.K_a:
                 player.hero.ml = False

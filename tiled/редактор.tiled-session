@@ -3,31 +3,41 @@
     "expandedProjectPaths": [
     ],
     "fileStates": {
+        "goblin_attack_anim.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
         "tileset_32x32(new).tsx": {
             "scaleInDock": 0.75,
             "scaleInEditor": 1
         },
         "world.tmx": {
             "scale": 0.6,
-            "selectedLayer": 0,
+            "selectedLayer": 1,
             "viewCenter": {
                 "x": 1572.5,
                 "y": 756.6666666666667
             }
         }
     },
-    "last.imagePath": "C:/Users/gregory/OneDrive/Рабочий стол/game/assets/tiles and background_foreground (new)",
+    "last.imagePath": "C:/Users/gregory/OneDrive/Рабочий стол/game/assets/enemies sprites/goblin",
     "map.height": 200,
     "map.lastUsedFormat": "tmx",
     "map.width": 300,
     "openFiles": [
         "world.tmx",
-        "tileset_32x32(new).tsx"
+        "tileset_32x32(new).tsx",
+        "goblin_attack_anim.tsx"
     ],
     "project": "редактор.tiled-project",
     "recentFiles": [
+        "goblin_attack_anim.tsx",
         "tileset_32x32(new).tsx",
         "world.tmx"
     ],
-    "tileset.lastUsedFormat": "tsx"
+    "tileset.lastUsedFormat": "tsx",
+    "tileset.tileSize": {
+        "height": 16,
+        "width": 16
+    }
 }
