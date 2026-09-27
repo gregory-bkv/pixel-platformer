@@ -9,9 +9,11 @@ class Goblin:
         self.y = y
         self.speedx = settings.GOBLINSPEED
         self.scale = settings.GOBLINSCALE
+        self.hp = 100
         self.anims = {
             "idle":animation.Animation("assets/enemies sprites/goblin/goblin_idle_anim_strip_4.png",9,4,5),
             "run":animation.Animation("assets/enemies sprites/goblin/goblin_run_anim_strip_6.png",9,6,5),
+            "death":animation.Animation("assets/enemies sprites/goblin/goblin_death_anim_strip_6.png",9,6,5)
             
 
             

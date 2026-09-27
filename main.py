@@ -44,7 +44,8 @@ while True:
             if i.key == pygame.K_SPACE:
                 player.hero.jump()
             if i.key == pygame.K_e:
-                player.hero.attacktimer = 20
+                if player.hero.state != "heroattack":
+                    player.hero.attacktimer = 12
         if i.type == pygame.KEYUP:
             if i.key == pygame.K_a:
                 player.hero.ml = False
