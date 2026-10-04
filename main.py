@@ -24,10 +24,21 @@ while True:
         level.cameray = 0
     player.hero.render(screen)
     player.hero.update()
+    if player.hero.attacktimer == 6:
+        for i in enemy.enemylist:
+            if i.get_hitbox().colliderect(player.hero.get_attack_area()):
+                
+                i.hp -= 25
+                i.hittimer = 12
+
+
     for i in enemy.enemylist:
         i.render(screen)
         i.update()
         i.control()
+        i.health_bar_enemy(screen)
+        i.goblin_attack_area()
+        
     for i in dust.dusts:
         i.render(screen)
         i.update()

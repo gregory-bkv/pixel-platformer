@@ -5,7 +5,7 @@ from scripts import level,dust
 lefthealthbar = pygame.image.load("assets/hud elements/health_hud_left.png")
 lefthealthbar = pygame.transform.scale_by(lefthealthbar,4)
 midhealthbar = pygame.image.load("assets/hud elements/health_hud_middle.png")
-midhealthbar = pygame.transform.scale_by(midhealthbar,4)
+midhealthbar = pygame.transform.scale_by(midhealthbar,4)                                
 righthealthbar = pygame.image.load("assets/hud elements/health_hud_right.png")
 righthealthbar = pygame.transform.scale_by(righthealthbar,4)
 
