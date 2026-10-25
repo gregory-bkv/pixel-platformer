@@ -9,6 +9,7 @@ midhealthbar = pygame.transform.scale_by(midhealthbar,4)
 righthealthbar = pygame.image.load("assets/hud elements/health_hud_right.png")
 righthealthbar = pygame.transform.scale_by(righthealthbar,4)
 
+
 class Player:
     def __init__(self,x,y):
         self.x = x
@@ -22,7 +23,8 @@ class Player:
             "jumpup":animation.Animation("assets/herochar sprites(new)/herochar_jump_up_anim_strip_3.png",9,3,10),
             "jumpdown":animation.Animation("assets/herochar sprites(new)/herochar_jump_down_anim_strip_3.png",9,3,10),
             "doublejump":animation.Animation("assets/herochar sprites(new)/herochar_jump_double_anim_strip_3.png",9,3,3),
-            "heroattack":animation.Animation("assets/herochar sprites(new)/herochar_sword_attack_anim_strip_4.png",9,4,3)
+            "heroattack":animation.Animation("assets/herochar sprites(new)/herochar_sword_attack_anim_strip_4.png",9,4,3),
+            "hit":animation.Animation("assets/herochar sprites(new)/herochar_hit_anim_strip_3.png",9,3,3)
 
             
             
@@ -37,6 +39,7 @@ class Player:
         self.jumps = 0
         self.timeinair = 0
         self.attacktimer  = 0
+        self.hittimer = 0
 
     def render(self,screen):
         if self.state == "heroattack" and self.direction == "left":
@@ -83,6 +86,9 @@ class Player:
         if self.attacktimer > 0 :
             self.state = "heroattack"
             self.attacktimer -= 1        
+        if self.hittimer > 0 :
+            self.state = "hit"
+            self.hittimer -= 1
         
                
         

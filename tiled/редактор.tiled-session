@@ -3,6 +3,10 @@
     "expandedProjectPaths": [
     ],
     "fileStates": {
+        "coins_hud.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
         "goblin_attack_anim.tsx": {
             "scaleInDock": 1,
             "scaleInEditor": 1
@@ -13,31 +17,33 @@
         },
         "world.tmx": {
             "scale": 0.6,
-            "selectedLayer": 1,
+            "selectedLayer": 2,
             "viewCenter": {
                 "x": 1572.5,
                 "y": 756.6666666666667
             }
         }
     },
-    "last.imagePath": "C:/Users/gregory/OneDrive/Рабочий стол/game/assets/enemies sprites/goblin",
+    "last.imagePath": "C:/Users/gregory/OneDrive/Рабочий стол/game/assets/hud elements",
     "map.height": 200,
     "map.lastUsedFormat": "tmx",
     "map.width": 300,
     "openFiles": [
         "world.tmx",
         "tileset_32x32(new).tsx",
-        "goblin_attack_anim.tsx"
+        "goblin_attack_anim.tsx",
+        "coins_hud.tsx"
     ],
     "project": "редактор.tiled-project",
     "recentFiles": [
+        "coins_hud.tsx",
         "goblin_attack_anim.tsx",
         "tileset_32x32(new).tsx",
         "world.tmx"
     ],
     "tileset.lastUsedFormat": "tsx",
     "tileset.tileSize": {
-        "height": 16,
-        "width": 16
+        "height": 9,
+        "width": 9
     }
 }

@@ -1,5 +1,5 @@
 import pygame
-from scripts import settings,animation,level
+from scripts import settings,animation,level,player
 import pytmx
 import random
 
@@ -14,7 +14,8 @@ class Goblin:
             "idle":animation.Animation("assets/enemies sprites/goblin/goblin_idle_anim_strip_4.png",9,4,5),
             "run":animation.Animation("assets/enemies sprites/goblin/goblin_run_anim_strip_6.png",9,6,5),
             "death":animation.Animation("assets/enemies sprites/goblin/goblin_death_anim_strip_6.png",9,6,5),
-            "hit":animation.Animation("assets/enemies sprites/goblin/goblin_hit_anim_strip_3.png",9,3,4)
+            "hit":animation.Animation("assets/enemies sprites/goblin/goblin_hit_anim_strip_3.png",9,3,4),
+            "attack":animation.Animation("assets/enemies sprites/goblin/goblin_attack_anim_strip_4.png",9,4,2)
             
 
             
@@ -29,10 +30,12 @@ class Goblin:
         self.timer = 100
         self.deathtimer = 30
         self.hittimer = 0
+        self.attack_timer = 0
 
     def render(self,screen):
 
         self.anims[self.state].render(screen,self.x-level.camerax,self.y-level.cameray,self.direction)
+        pygame.draw.rect(screen,[255,0,0],self.goblin_attack_area().move(-level.camerax,-level.cameray),3)
 
     def update(self):
         self.anims[self.state].update()
@@ -55,15 +58,21 @@ class Goblin:
             self.y += self.sd
             self.collisiony()
 
+
+        if self.attack_timer > 0 :
+            self.state = "attack"
+            self.attack_timer -= 1     
+        if self.hittimer > 0 :
+            self.state = "hit"
+            self.hittimer -= 1
+        
         if self.hp <= 0:
             self.state = "death"
             self.deathtimer -= 1
             if self.deathtimer <= 0:
                 enemylist.remove(self)
 
-        if self.hittimer > 0 :
-            self.state = "hit"
-            self.hittimer -= 1
+            
 
         
 
@@ -113,11 +122,20 @@ class Goblin:
             self.mr = False
             self.ml = False
 
+        if player.hero.get_hitbox().colliderect(self.goblin_attack_area()) and self.attack_timer == 0:
+            self.attack_timer = 8
+
+        if self.state == "attack":
+            self.mr = False
+            self.ml = False
+            
+
     def goblin_attack_area(self):
         if self.direction == "left":
-            return pygame.Rect(self.x - 130-level.camerax,self.y-level.cameray,150,150)
+            return pygame.Rect(self.x ,self.y,100,150)
         else:
-            return pygame.Rect(self.x +130-level.camerax,self.y-level.cameray,150,150)
+            return pygame.Rect(self.x ,self.y,100,150)
+
 
     def health_bar_enemy(self,screen):
         pygame.draw.rect(screen,[255,0,0],(self.x-10-level.camerax,self.y -40-level.cameray,1.5*self.hp,35))
